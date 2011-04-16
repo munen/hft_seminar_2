@@ -1,6 +1,25 @@
-5
--
+# Clojure
 
+##1 Einführung/Vorwort
+###1.1 Was ist Clojure?
+
+
+##2 Funktionale Programmiersprache
+###2.1 Definition
+##2.2 Vorteile/Nachteile
+
+##3 Dynamische Programmiersprache
+###3.1 Definition
+###3.2 Vorteile/Nachteile
+
+#4 Lisp
+###4.1 Definition
+###4.2 Abgrenzung Lisp/Clojure
+
+#5 Programmiersprachen in der JVM
+##5.1 Beispiele
+##5.2 Vorteile/Nachteile
+##Notes
 * JVM: interessante Platform
   * Performanz
   * ubiquitaer
@@ -8,8 +27,23 @@
 
 * Sprachportierungen: jRuby, Jython, etc
 
-6
--
+#6 Probleme und deren Lösungen in unterschiedlichen Programmiersprachen
+##6.1 Multithreading/Nebenläufigkeit
+###6.1.1 Definition des Problems
+###6.1.2 Lösung in Java
+####6.1.2.1 Konzeptionelle Lösung
+####6.1.2.2 Code Beispiel
+###6.1.3 Lösunge in (Common) Lisp
+####6.1.3.1 Konzeptionelle Lösung
+####6.1.3.2 Code Beispiel
+###6.1.4 Lösung in Scala
+####6.1.4.1 Konzeptionelle Lösung
+####6.1.4.2 Code Beispiel
+###6.1.5 Lösung in Clojure
+####6.1.5.1 Konzeptionelle Lösung
+####6.1.5.2 Code Beispiel
+##6.2 *Erweiterbar je nach gewünschtem/erforderlichem  Umfang*
+##Notes
 
 * Multithreading Schwachstelle imperativer Ansatz
  * Locking
@@ -23,7 +57,6 @@
 * LISP
  * Konziser Code Macros
   * Durch Uebersichtlichkeit weniger fehleranfaellig
- 
 
 * Clojure
  * Software Transactional Memory
@@ -39,3 +72,7 @@
   * Sortier Algorithmen
  * Vorteile Locking vs. echte Nebenlaeufigkeit herausstellen
 
+
+#7 Zusammenfassung/Schlusswort
+##7.1 Alleinstellungsmerkmale
+##7.2 Einsatzgebiete von Clojure
