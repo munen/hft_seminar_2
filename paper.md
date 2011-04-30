@@ -22,10 +22,10 @@ war eine einfache Datenstruktur sowohl für Code als auch für Daten zu
 verwenden. Daher der Term *LISP* - er steht für "List processing". 
 
 In der Essenz gibt heute zwei Paradigmen Programme zu schreiben - der eine
-Zweig bedient sich dem Vorbild Cs und den aus diesem Gedankengut entstandenen
+Zweig bedient sich dem Vorbild C's und den aus diesem Gedankengut entstandenen
 Sprachen, der andere Zweig sind LISPs und LISP ähnliche Sprachen.  *LISP*
 selbst wurde lange Zeit vernachlässigt - aus guten und weniger berechtigten
-Gründen. Doch je weiter die Zeit vortschreitet verwenden neue Sprachen zusehens
+Gründen. Doch je weiter die Zeit fortschreitet verwenden neue Sprachen zusehens
 Denkweisen und Modelle aus *LISP* - beispielsweise "Garbage Collection" und
 "Runtime Typing".
 
