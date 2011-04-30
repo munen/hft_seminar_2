@@ -14,6 +14,22 @@
 
 #4 Lisp
 ###4.1 Definition
+*LISP* wurde 1960 von John McCarthy in einer wissenschaftlichen Arbeit
+forciert. Diese Arbeit zeigt auf wie durch einige wenige einfache Operatoren
+und einer definierten Notation von Funktionen eine vollwertige
+Programmiersprache definiert wird.  Eine von McCarthy's grundlegend neuen Ideen
+war eine einfache Datenstruktur sowohl für Code als auch für Daten zu
+verwenden. Daher der Term *LISP* - er steht für "List processing". 
+
+In der Essenz gibt heute zwei Paradigmen Programme zu schreiben - der eine
+Zweig bedient sich dem Vorbild Cs und den aus diesem Gedankengut entstandenen
+Sprachen, der andere Zweig sind LISPs und LISP ähnliche Sprachen.  *LISP*
+selbst wurde lange Zeit vernachlässigt - aus guten und weniger berechtigten
+Gründen. Doch je weiter die Zeit vortschreitet verwenden neue Sprachen zusehens
+Denkweisen und Modelle aus *LISP* - beispielsweise "Garbage Collection" und
+"Runtime Typing".
+
+
 ###4.2 Abgrenzung Lisp/Clojure
 
 #5 Programmiersprachen in der JVM
