@@ -1,18 +1,18 @@
 # Clojure
 
-##1 Einführung/Vorwort
+##1 Einführung/Abstract (_A_)
 ###1.1 Was ist Clojure?
 
 
-##2 Funktionale Programmiersprache
+##2 Funktionale Programmiersprache (_B_)
 ###2.1 Definition
 ##2.2 Vorteile/Nachteile
 
-##3 Dynamische Programmiersprache
+##3 Dynamische Programmiersprache (_A_)
 ###3.1 Definition
 ###3.2 Vorteile/Nachteile
 
-#4 Lisp
+#4 Lisp (_A_)
 ###4.1 Definition
 *LISP* wurde 1960 von John McCarthy in einer wissenschaftlichen Arbeit
 forciert. Diese Arbeit zeigt auf wie durch einige wenige einfache Operatoren
@@ -32,7 +32,7 @@ Denkweisen und Modelle aus *LISP* - beispielsweise "Garbage Collection" und
 
 ###4.2 Abgrenzung Lisp/Clojure
 
-#5 Programmiersprachen in der JVM
+#5 Programmiersprachen in der JVM (_B_)
 ##5.1 Beispiele
 ##5.2 Vorteile/Nachteile
 ##Notes
@@ -46,16 +46,16 @@ Denkweisen und Modelle aus *LISP* - beispielsweise "Garbage Collection" und
 #6 Probleme und deren Lösungen in unterschiedlichen Programmiersprachen
 ##6.1 Multithreading/Nebenläufigkeit
 ###6.1.1 Definition des Problems
-###6.1.2 Lösung in Java
+###6.1.2 Lösung in Java (_B_)
 ####6.1.2.1 Konzeptionelle Lösung
 ####6.1.2.2 Code Beispiel
-###6.1.3 Lösunge in (Common) Lisp
+###6.1.3 Lösung in Ruby (_B_)
 ####6.1.3.1 Konzeptionelle Lösung
 ####6.1.3.2 Code Beispiel
-###6.1.4 Lösung in Scala
+###6.1.4 Lösung in Python (_A_)
 ####6.1.4.1 Konzeptionelle Lösung
 ####6.1.4.2 Code Beispiel
-###6.1.5 Lösung in Clojure
+###6.1.5 Lösung in Clojure (_A_)
 ####6.1.5.1 Konzeptionelle Lösung
 ####6.1.5.2 Code Beispiel
 ##6.2 *Erweiterbar je nach gewünschtem/erforderlichem  Umfang*
@@ -89,6 +89,8 @@ Denkweisen und Modelle aus *LISP* - beispielsweise "Garbage Collection" und
  * Vorteile Locking vs. echte Nebenlaeufigkeit herausstellen
 
 
-#7 Zusammenfassung/Schlusswort
+#7 Zusammenfassung/Schlusswort (_B_)
 ##7.1 Alleinstellungsmerkmale
 ##7.2 Einsatzgebiete von Clojure
+
+#8 Bibliographie
