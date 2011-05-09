@@ -21,6 +21,13 @@ Programmiersprache definiert wird.  Eine von McCarthy's grundlegend neuen Ideen
 war eine einfache Datenstruktur sowohl für Code als auch für Daten zu
 verwenden. Daher der Term *LISP* - er steht für "List processing". 
 
+McCarthy definierte eine Sprache, die auf nur sechs Grundfunktionen fußte - car,
+cdr, cons, cond, lambda und Rekursion. Dabei gab es damals weder verbreiteten
+Nutzen von lambda Berechnungen noch von Rekursion. Noch vor McCarthy´s Lisp
+wurde bei IBM debattiert zu welchem Zweck Rekursion eigentlich dienen möge und
+kam zu keinem sinnigen Schluss. McCarthy klärte diese Fragen jedoch schon in den
+ersten Vorträgen in denen er LISP vorstellte[[PG1][]].
+
 In der Essenz gibt heute zwei Paradigmen Programme zu schreiben - der eine
 Zweig bedient sich dem Vorbild C's und den aus diesem Gedankengut entstandenen
 Sprachen, der andere Zweig sind LISPs und LISP ähnliche Sprachen.  *LISP*
@@ -31,6 +38,56 @@ Denkweisen und Modelle aus *LISP* - beispielsweise "Garbage Collection" und
 
 
 ###4.2 Abgrenzung Lisp/Clojure
+Clojure baut auf dem Stack der Java Virtual Machine auf. Dies bietet einerseits
+den Entwicklern der Sprache selbst den Vorteil viele Probleme der Informatik
+nicht selbst lösen zu müssen, sondern auf solide Grundlagen wie Datentypen,
+Threading oder Portabilität der JVM zurückgreifen zu können. So können sie sich
+ganz der Sprache und interessante neue Probleme konzentrieren statt etwa einen
+eigenen Garbage Collector schreiben zu müssen. Anwender der Sprache hingegen
+kommt dieser Ansatz ebenfalls zu Gute - die Sprache schnell weiter und kann so
+in kurzen Iterationen auf neue Eingaben aus der Community reagieren. Abseits von
+diesem grundlegenden Vorteil kommt ein wichtiger Business Aspekt: Clojure kann
+direkt mit dem Java Ökosystem interagieren und hat so Zugang zu einem reichen
+Quell bestehender Software, Bibliotheken und Datenbanken.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Aufgrund der speziellen Syntax steht im Jargon File[[PG2][]] eine alternative
+Beschreibung: "Lots of Irritating Superfluous Parantheses".
 
 #5 Programmiersprachen in der JVM (_B_)
 ##5.1 Beispiele
@@ -68,7 +125,8 @@ Denkweisen und Modelle aus *LISP* - beispielsweise "Garbage Collection" und
 
 * Funktionale Vorteile
  * Immutability
- * Listen, map, filter, reduce -> Keine Variable
+ * Listen, map, filter, reduce 
+ * Keine Variable
 
 * LISP
  * Konziser Code Macros
@@ -94,3 +152,8 @@ Denkweisen und Modelle aus *LISP* - beispielsweise "Garbage Collection" und
 ##7.2 Einsatzgebiete von Clojure
 
 #8 Bibliographie
+[PG1]: http://www.paulgraham.com/mcilroy.html "Doug McIlroy: McCarthy presents LISP"
+[PG2]: http://www.paulgraham.com/jargon96.html "Jargon File entry"
+
+
+#9 Scratch
