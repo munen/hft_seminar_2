@@ -1,0 +1,99 @@
+% Dokumentenkopf ---------------------------------------------------------------
+%   Diese Vorlage basiert auf "scrreprt" aus dem koma-script.
+% ------------------------------------------------------------------------------
+\documentclass[
+    12pt, % Schriftgröße
+    DIV10,
+    ngerman, % für Umlaute, Silbentrennung etc.
+    a4paper, % Papierformat
+    oneside, % einseitiges Dokument
+    notitlepage, % es wird eine Titelseite verwendet, aber mit Abstract
+    parskip=half, % Abstand zwischen Absätzen (halbe Zeile)
+    headings=normal, % Größe der Überschriften verkleinern
+    listof=totoc, % Verzeichnisse im Inhaltsverzeichnis aufführen
+    bibliography=totoc, % Literaturverzeichnis im Inhaltsverzeichnis aufführen
+    index=totoc, % Index im Inhaltsverzeichnis aufführen
+    captions=tableheading, % Beschriftung von Tabellen unterhalb ausgeben
+    final % Status des Dokuments (final/draft)
+]{scrreprt}
+
+\input{Meta}
+\input{Packages}
+
+% Index und Abkürzungsverzeichnisses
+\makeindex
+\makenomenclature
+
+
+% Kopf- und Fußzeilen, Seitenränder, etc
+\input{Seitenstil}
+
+% eigene Definitionen für Silbentrennung
+\include{Silbentrennung}
+
+% eigene LaTeX-Befehle
+\include{Befehle}
+
+\begin{document}
+
+% erlaube regulaere Anfuehrungszeichen
+\shorthandoff{"}
+
+% subsubsection nummerieren
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+% Deckblatt und Abstract ohne Seitenzahl
+\ofoot{}
+\include{Deckblatt}
+%\include{Inhalt/Abstract}
+\ofoot{\pagemark}
+
+% Vor dem Hauptteil: römische Ziffern
+\pagenumbering{Roman}
+\tableofcontents % Inhaltsverzeichnis
+
+% Abkürzungsverzeichnis 
+\input{Inhalt/Glossar}
+% für korrekte Überschrift in der Kopfzeile
+\clearpage\markboth{\nomname}{\nomname} 
+\printnomenclature
+\label{sec:Glossar}
+
+\listoffigures % Abbildungsverzeichnis
+\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\listoftables % Tabellenverzeichnis
+\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+\renewcommand{\lstlistlistingname}{Verzeichnis der Listings}
+\addcontentsline{toc}{chapter}{Verzeichnis der Listings}
+\lstlistoflistings % Listings-Verzeichnis
+
+% arabische Seitenzahlen im Hauptteil 
+\clearpage
+\pagenumbering{arabic}
+
+\input{Inhalt}
+
+\renewcommand{\bibname}{Quellenverzeichnis}
+\bibliography{Bibliographie} % Aufruf: bibtex Masterarbeit
+\addcontentsline{toc}{chapter}{\bibname}
+%\bibliographystyle{alphadin} % DIN-Stil des Literaturverzeichnisses
+\bibliographystyle{natdin} % DIN-Stil des Literaturverzeichnisses
+
+% Anhang 
+%\begin{appendix}
+%    %\clearpage
+%    \pagenumbering{roman}
+%    \chapter{Anhang}
+%    \label{sec:Anhang}
+%    % Rand der Aufzählungen in Tabellen anpassen
+%    \setdefaultleftmargin{1em}{}{}{}{}{}
+%    \input{Anhang}
+%\end{appendix}
+
+\newpage
+
+% Index 
+%\printindex
+
+\end{document}
