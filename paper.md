@@ -18,6 +18,7 @@ und übersichtliche Implementierung von multi-threaded Designs."[[Clojure.org][]
 ###2.1 Definition
 ##2.2 Vorteile/Nachteile
 
+
 * * *
 
 ##3 Lisp (_A_)
@@ -86,6 +87,50 @@ allerdings ohne die
 Syntax der S-Expressions zu verlassen, sodass am Ende im Vergleich mit anderen
 Sprachen dennoch überproportional viele Klammern übrig bleiben.
 
+###3.3 Vorteile/Nachteile
+Eine der populären Fragen ausserhalb des LISP Umfeldes ist: "Falls LISP wirklich
+so gut ist, weshalb hat es dann in all den Jahren keine breitere Verbreitung
+gefunden?"
+
+Der Fragesteller geht hier davon aus ein gutes Argument gegen LISP gefunden zu
+haben, denn schließlich kann etwas nicht gut sein, nur weil es nicht von der
+breiten Masse verwendet wird. Dies jedoch ist ein Trugschluss eines Menschen,
+der im Zweifel keine Grundausbildung in der Logik besitzt. Die Argumentation ist
+im fachlichen Sinne überhaupt keine, sondern eine empirisch quantative
+Konfrontation, die mit Qualität nicht zu verwechseln ist.
+
+In den frühen Jahren oder gar Jahrzehnten gab es noch legitime Gründe gegen LISP
+- damals waren Computer etwa noch nicht ausreichend schnell und mächtig, um
+dergleichen Hochsprachen auszuführen. In einer Zeit jedoch in der Java seit
+einem Jahrzehnt breite Verbreitung gefunden hat scheint dieses Argument nicht
+sehr weitreichend. Heute sind Computer nicht nur schnell genug, um LISPs
+auszuführen, sie sind sogar im Vergleich mit anderen Sprachen sehr schnell.
+
+Common LISP Kompilate können gar schneller sein als C Kompilate. Das liegt
+daran, dass es Vorteile hat auf hohem Abstraktionsniveau zu agieren - etwa *Tail
+Recursion* spart in der Ausführung viel Zeit. Clojure ist nicht ganz so schnell,
+aber unter der großen Sprachenvielfalt immernoch sehr schnell - es ist etwa 3-5x
+langsamer als Java. Verglichen mit anderen Hochsprachen wie Ruby oder Python
+also 2 Größenordnungen schneller.
+
+Heute zählt das Argument der Geschwindigkeit also eher im Vorteil der LISPs -
+das zweitverbreiteste Argument ist das der Verbreitung, das eingangs des
+Kapitesl erwähnt wurde. Dies jedoch ist eine selbsterfüllende Prophezeiung -
+wenn man nur den Massentrends folgt werden diese rückgekoppelt stärker, wobei
+popentiell bessere Alternativen ausser Acht gelassen werden. Hier sind wir bei
+klassischer Monopolbildungstaktiken - nicht bei qualitativen Aussagen über
+einzelne Entitäten.
+
+Die letzte wichtige Barriere sind Manager im Business, die es sich nicht leisten
+können Entscheide von Technikern fällen zu lassen - sie bleiben gerne auf der
+sicheren Seite der sogenannten "Business Best Practices". Auch hier führt
+dergleichen Entscheidungsfindung zu Monopolbildung. Jedoch bietet Clojure hier
+einen möglichen Ausstieg - Clojure basiert auf der JVM und ist dort ein Bürger
+erster Klasse. So können Altprogramme und -bibliotheken ohne Weiteres
+weiterverwendet werden ohne dabei auf veralteten Paradigmen sitzen zu bleiben.
+Selbst Microsoft sieht diesen Trend wachsen und liess erst Python auf die .NET
+Platform, nun entwickeln sie eine eigene funktionale Programmiersprache F#, die
+unter Entwicklern im Windows Umfeld zusehens stärkere Verbreitung findet.
 
 
 * * *
@@ -185,9 +230,21 @@ ganz eigene Weise:
     Möglichkeit Subtypen zu erstellen: ad-hoc Hierarchien.
  * Kapselung
 
+
+# BEGIN JOY OF CLOJURE
+
+
 Einer der Nachteile der strikten Objektorientung ist die enge Kopplung von Daten
 und Funktion. In manchen Sprachen ist es gar nicht möglich Funktion ohne das
-elaborate Formulieren von Klassen zu implementieren.
+elaborate Formulieren von Klassen zu implementieren. Dies bringt eine ganz
+eigene Form von Komplexität und Weitschweifigkeit mit sich, die von vielen als
+nicht notwendig angesehen wird. Häufig 
+
+
+
+# END JOY OF CLOJURE
+
+
 
 
 
@@ -245,15 +302,56 @@ elaborate Formulieren von Klassen zu implementieren.
 ####6.1.2.2 Code Beispiel
 ###6.1.3 Lösung in Ruby (_B_)
 ####6.1.3.1 Konzeptionelle Lösung
+Race Condition
+<pre>
+def inc(n) 
+  n+1
+end 
+sum = 0 
+threads = (1..10).map do
+  Thread.new do 
+    10_000.times do
+      sum = inc(sum) 
+    end
+  end 
+end
+threads.each(&:join)
+p sum
+</pre>
+Beispielergebnis: 17221
+
+Was ist hier geschehen? Es wurden 10 Threads generiert, die jeweils 10.000x die
+Variable 'sum' inkrementieren. Das Problem hierbei ist, dass bei einem solchen
+Konzept schnell Dateninkonsistenzen entstehen.
+
+Nehmen wir an Thread #1 inkrementiert die Variable sum mittels inc(). sum steht
+zur Zeit auf dem Wert 100. inc(sum) wird aufgerufen. Nun kommt der Scheduler des
+Betriebssystemes und gibt Thread #2 CPU Zeit. Dieser fuehrt ebenfalls
+inc(sum) mit dem Wert 100 aus - sum wird als 101 gespeichert. Der Scheduler
+schlägt wieder zu und gibt Thread #1 die Chance seine Berechnung zu beenden.
+Dieser speichert sum nun ebenfalls als 101
+
+
 ####6.1.3.2 Code Beispiel
 ###6.1.4 Lösung in Python (_A_)
 ####6.1.4.1 Konzeptionelle Lösung
 ####6.1.4.2 Code Beispiel
 ###6.1.5 Lösung in Clojure (_A_)
 ####6.1.5.1 Konzeptionelle Lösung
-`(defun foo `
-`          (list))`
 ####6.1.5.2 Code Beispiel
+
+<pre>
+(def visitors (ref #{}))
+(defn hello 
+  "Hello world function. Remembering previous calls in a transaction"
+  [name]
+  (dosync
+      (if @visitors name
+        (str "Welcome back, " name)
+        (do
+          (alter visitors conj name)
+      (str "Hello, " name)))))
+</pre>
 ##6.2 *Erweiterbar je nach gewünschtem/erforderlichem  Umfang*
 ##Notes
 
