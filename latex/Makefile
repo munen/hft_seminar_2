@@ -1,11 +1,11 @@
-thesis:
-	pdflatex thesis.tex
-	bibtex thesis
-	makeindex thesis.nlo -s nomencl.ist -o thesis.nls
-	pdflatex thesis.tex
+paper:
+	pdflatex paper.tex
+	bibtex paper
+	makeindex paper.nlo -s nomencl.ist -o paper.nls
+	pdflatex paper.tex
 
 small:
-	pdflatex thesis.tex
+	pdflatex paper.tex
 
 clean:
 	find -iname '*aux' -exec rm {} \;
