@@ -1,0 +1,112 @@
+\chapter{Lisp}
+\section{Definition}
+*LISP* wurde 1960 von John McCarthy in einer wissenschaftlichen Arbeit
+forciert. Diese Arbeit zeigt auf wie durch einige wenige einfache Operatoren
+und einer definierten Notation von Funktionen eine vollwertige
+Programmiersprache definiert wird.  Eine von McCarthy's grundlegend neuen Ideen
+war eine einfache Datenstruktur sowohl für Code als auch für Daten zu
+verwenden. Daher der Term *LISP* - er steht für "List processing". 
+
+McCarthy definierte eine Sprache, die auf nur sechs Grundfunktionen fußte - car,
+cdr, cons, cond, lambda und Rekursion. Dabei gab es damals weder verbreiteten
+Nutzen von lambda Berechnungen noch von Rekursion. Noch vor McCarthy´s Lisp
+wurde bei IBM debattiert zu welchem Zweck Rekursion eigentlich dienen möge und
+kam zu keinem sinnigen Schluss. McCarthy klärte diese Fragen jedoch schon in den
+ersten Vorträgen in denen er LISP vorstellte[[PG1][]].
+
+In der Essenz gibt heute zwei Paradigmen Programme zu schreiben - der eine
+Zweig bedient sich dem Vorbild C's und den aus diesem Gedankengut entstandenen
+Sprachen, der andere Zweig sind LISPs und LISP ähnliche Sprachen.  *LISP*
+selbst wurde lange Zeit vernachlässigt - aus guten und weniger berechtigten
+Gründen. Doch je weiter die Zeit fortschreitet verwenden neue Sprachen zusehens
+Denkweisen und Modelle aus *LISP* - beispielsweise "Garbage Collection" und
+"Runtime Typing". Der Ansatz des *Code als Daten* und der Macros heben LISP
+allerdings bis heute eindeutig aus der restlichen Sprachvielfalt hervor.
+
+
+\section{Abgrenzung Lisp/Java/Clojure}
+Clojure baut auf dem Stack der *Java Virtual Machine* auf. Dies bietet
+einerseits den Entwicklern der Sprache selbst den Vorteil viele Probleme der
+Informatik nicht selbst lösen zu müssen, sondern auf solide Grundlagen wie
+Datentypen, Threading oder Portabilität der JVM zurückgreifen zu können. So
+können sie sich ganz der Sprache und interessante neue Probleme konzentrieren
+statt etwa einen eigenen Garbage Collector schreiben zu müssen. Anwender der
+Sprache hingegen kommt dieser Ansatz ebenfalls zu Gute - die Sprache schnell
+weiter und kann so in kurzen Iterationen auf neue Eingaben aus der Community
+reagieren. Abseits von diesem grundlegenden Vorteil kommt ein wichtiger Business
+Aspekt: Clojure kann direkt mit dem Java Ökosystem interagieren und hat so
+Zugang zu einem reichen Quell bestehender Software, Bibliotheken und
+Datenbanken.
+
+Mit diesem Modell lößt Clojure gleich mehrere Probleme. Auf Seiten der Sprache
+selbst bietet sich eine grundsolide Platform, die zugleich performant wie
+portabel ist. Hierfür hat Sun Microsystems über mehr als ein Jahrzehnt hinweg
+mehr Resouren investiert als einigen wenigen Entwicklern einer neuen Sprache
+möglich ist. Wissend um diese Vorteile der JVM gibt es viele Programmierer, die
+bisher willentlich darauf verzichtet haben, da Java verglichen mit Alternativen
+weder unbedingt als schön, bündig oder leicht bezeichnet werden kann.
+
+Viele dieser Programmier suchten bisher Zuflucht in anderen Sprachen wie Python
+oder Ruby, die noch dazu den Vorteil haben dynamisch getypt zu sein haben. Doch
+diese Zuflucht kommt nicht ohne Kosten - Python und Ruby sind in der Ausführung
+zwei Größenordnungen langsamer [[Citation needed][]]. Clojure Code kompiliert
+jedoch in JVM Bytecode, ist also mit Java binärkompatibel, hat ähnliche
+Performanz-Eigenschaften, umgeht aber die ungeliebte Java Syntax.
+
+Andererseits gibt es Programmierer, die die klassische LISP Syntax, die auf
+S-Expressions fusst[[Citation needed2][]] (wie sie etwa in Common LISP)
+implementiert ist) für zu Klammer-lastig befinden.  Aufgrund dieser speziellen
+Syntax steht im Jargon File[[PG2][]] eine alternative Beschreibung des Akrynyms
+LISP: "Lots of Irritating Superfluous Parantheses". Auch hier räumt Clojure auf,
+indem es ähnlich wie Ruby mit unnötigen Klammern spart. Die Syntax wird um Vectors und Maps
+
+allerdings ohne die
+Syntax der S-Expressions zu verlassen, sodass am Ende im Vergleich mit anderen
+Sprachen dennoch überproportional viele Klammern übrig bleiben.
+
+\section{3.3 Vorteile/Nachteile}
+Eine der populären Fragen ausserhalb des LISP Umfeldes ist: "Falls LISP wirklich
+so gut ist, weshalb hat es dann in all den Jahren keine breitere Verbreitung
+gefunden?"
+
+Der Fragesteller geht hier davon aus ein gutes Argument gegen LISP gefunden zu
+haben, denn schließlich kann etwas nicht gut sein, nur weil es nicht von der
+breiten Masse verwendet wird. Dies jedoch ist ein Trugschluss eines Menschen,
+der im Zweifel keine Grundausbildung in der Logik besitzt. Die Argumentation ist
+im fachlichen Sinne überhaupt keine, sondern eine empirisch quantative
+Konfrontation, die mit Qualität nicht zu verwechseln ist.
+
+In den frühen Jahren oder gar Jahrzehnten gab es noch legitime Gründe gegen LISP
+- damals waren Computer etwa noch nicht ausreichend schnell und mächtig, um
+dergleichen Hochsprachen auszuführen. In einer Zeit jedoch in der Java seit
+einem Jahrzehnt breite Verbreitung gefunden hat scheint dieses Argument nicht
+sehr weitreichend. Heute sind Computer nicht nur schnell genug, um LISPs
+auszuführen, sie sind sogar im Vergleich mit anderen Sprachen sehr schnell.
+
+Common LISP Kompilate können gar schneller sein als C Kompilate. Das liegt
+daran, dass es Vorteile hat auf hohem Abstraktionsniveau zu agieren - etwa *Tail
+Recursion* spart in der Ausführung viel Zeit. Clojure ist nicht ganz so schnell,
+aber unter der großen Sprachenvielfalt immernoch sehr schnell - es ist etwa 3-5x
+langsamer als Java. Verglichen mit anderen Hochsprachen wie Ruby oder Python
+also 2 Größenordnungen schneller.
+
+Heute zählt das Argument der Geschwindigkeit also eher im Vorteil der LISPs -
+das zweitverbreiteste Argument ist das der Verbreitung, das eingangs des
+Kapitesl erwähnt wurde. Dies jedoch ist eine selbsterfüllende Prophezeiung -
+wenn man nur den Massentrends folgt werden diese rückgekoppelt stärker, wobei
+popentiell bessere Alternativen ausser Acht gelassen werden. Hier sind wir bei
+klassischer Monopolbildungstaktiken - nicht bei qualitativen Aussagen über
+einzelne Entitäten.
+
+Die letzte wichtige Barriere sind Manager im Business, die es sich nicht leisten
+können Entscheide von Technikern fällen zu lassen - sie bleiben gerne auf der
+sicheren Seite der sogenannten "Business Best Practices". Auch hier führt
+dergleichen Entscheidungsfindung zu Monopolbildung. Jedoch bietet Clojure hier
+einen möglichen Ausstieg - Clojure basiert auf der JVM und ist dort ein Bürger
+erster Klasse. So können Altprogramme und -bibliotheken ohne Weiteres
+weiterverwendet werden ohne dabei auf veralteten Paradigmen sitzen zu bleiben.
+Selbst Microsoft sieht diesen Trend wachsen und liess erst Python auf die .NET
+Platform, nun entwickeln sie eine eigene funktionale Programmiersprache F\#, die
+unter Entwicklern im Windows Umfeld zusehens stärkere Verbreitung findet.
+
+
