@@ -1,0 +1,25 @@
+\chapter{Probleme und deren Lösungen in unterschiedlichen Programmiersprachen}
+\section{Ruby}
+\lstset{language=Ruby, basicstyle=\footnotesize, showstringspaces=false, tabsize=2}
+\lstinputlisting[label=lst:ThreadRaceRuby,caption=\texttt{Thread Race Ruby}
+]{Listings/thread_race.rb}
+
+
+Beispielergebnis: 17221
+
+Was ist hier geschehen? Es wurden 10 Threads generiert, die jeweils 10.000x die
+Variable 'sum' inkrementieren. Das Problem hierbei ist, dass bei einem solchen
+Konzept schnell Dateninkonsistenzen entstehen.
+
+Nehmen wir an Thread \#1 inkrementiert die Variable sum mittels inc(). sum steht
+zur Zeit auf dem Wert 100. inc(sum) wird aufgerufen. Nun kommt der Scheduler des
+Betriebssystemes und gibt Thread \#2 CPU Zeit. Dieser fuehrt ebenfalls
+inc(sum) mit dem Wert 100 aus - sum wird als 101 gespeichert. Der Scheduler
+schlägt wieder zu und gibt Thread \#1 die Chance seine Berechnung zu beenden.
+Dieser speichert sum nun ebenfalls als 101
+
+\section{Clojure}
+
+\lstset{language=Lisp, basicstyle=\footnotesize, showstringspaces=false, tabsize=2}
+\lstinputlisting[label=lst:ThreadRaceClojure,caption=\texttt{Thread Race Clojure}
+]{Listings/tread_race.lisp}
