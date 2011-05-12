@@ -1,4 +1,4 @@
-\chapter{Probleme und deren Lösungen in unterschiedlichen Programmiersprachen}
+\chapter{Parallelität}
 \section{Ruby}
 \lstset{language=Ruby, basicstyle=\footnotesize, showstringspaces=false, tabsize=2}
 \lstinputlisting[label=lst:ThreadRaceRuby,caption=\texttt{Thread Race Ruby}
@@ -22,7 +22,9 @@ nun ebenfalls als 1.
 Dieser Effekt wird \NeuerBegriff{Racing Condition} genannt. Er stammt aus dem
 Englischen und will aussagen, dass mehrere Entitäten in einem Wettlauf um
 Resourcen stehen. Ohne die Hilfsmittel aus Funktionaler Programmierung müsste
-die Resource \Code{sum} dagegen abgesichert werden. Dafür werden häufig \NeuerBegriff{Locks} eingesetzt. Bei einem Lock wird ein Codebereich gesichert, indem nur einem Thread dazu Zutritt gewährt wird. 
+die Resource \Code{sum} dagegen abgesichert werden. Dafür werden häufig
+\NeuerBegriff{Locks} eingesetzt. Bei einem Lock wird ein Codebereich gesichert,
+indem nur einem Thread dazu Zutritt gewährt wird. 
 
 Diese Methodologie funktioniert, jedoch muss jede Stelle an der eine Racing
 Condition entstehen kann separat gekapselt werden - wird nur eine vergessen
@@ -47,7 +49,7 @@ implementiert (z.B. über das interface \Code{java.util.concurrent.locks.Lock}).
 \section{Clojure}
 
 \lstset{language=Lisp, basicstyle=\footnotesize, showstringspaces=false, tabsize=2}
-\lstinputlisting[label=lst:ThreadRaceClojure,caption=\texttt{Thread Race Clojure}
+\lstinputlisting[label=lst:StmClojure,caption=\texttt{STM Clojure}
 ]{Listings/tread_race.lisp}
 
 In diesem Listing ist der Mechanismus des \NeuerBegriff{Software Transactional
