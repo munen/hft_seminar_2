@@ -13,7 +13,7 @@ cdr, cons, cond, lambda und Rekursion. Dabei gab es damals weder verbreiteten
 Nutzen von lambda Berechnungen noch von Rekursion. Noch vor McCarthy´s Lisp
 wurde bei IBM debattiert zu welchem Zweck Rekursion eigentlich dienen möge und
 kam zu keinem sinnigen Schluss. McCarthy klärte diese Fragen jedoch schon in den
-ersten Vorträgen in denen er LISP vorstellte\cite{PG1}.
+ersten Vorträgen in denen er LISP vorstellte[\cite{PG1}].
 
 In der Essenz gibt heute zwei Paradigmen Programme zu schreiben - der eine
 Zweig bedient sich dem Vorbild C's und den aus diesem Gedankengut entstandenen
@@ -56,11 +56,12 @@ jedoch in JVM Bytecode, ist also mit Java binärkompatibel, hat ähnliche
 Performanz-Eigenschaften, umgeht aber die ungeliebte Java Syntax.
 
 Andererseits gibt es Programmierer, die die klassische LISP Syntax, die auf
-S-Expressions fusst[[Citation needed2][]] (wie sie etwa in Common LISP)
+S-Expressions fusst[\cite{wiki3}] (wie sie etwa in Common LISP)
 implementiert ist) für zu Klammer-lastig befinden.  Aufgrund dieser speziellen
-Syntax steht im Jargon File\cite{PG2} eine alternative Beschreibung des Akrynyms
-LISP: \Fachbegriff{Lots of Irritating Superfluous Parantheses}. Auch hier räumt Clojure auf,
-indem es ähnlich wie Ruby mit unnötigen Klammern spart. Die Syntax wird um Vectors und Maps
+Syntax steht im Jargon File[\cite{PG2}] eine alternative Beschreibung des
+Akrynyms LISP: \Fachbegriff{Lots of Irritating Superfluous Parantheses}. Auch
+hier räumt Clojure auf, indem es ähnlich wie Ruby mit unnötigen Klammern spart.
+Die Syntax wird um Vectors und Maps
 
 allerdings ohne die
 Syntax der S-Expressions zu verlassen, sodass am Ende im Vergleich mit anderen
@@ -89,8 +90,9 @@ Common LISP Kompilate können gar schneller sein als C Kompilate. Das liegt
 daran, dass es Vorteile hat auf hohem Abstraktionsniveau zu agieren - etwa
 \Fachbegriff{Tail Recursion} spart in der Ausführung viel Zeit. Clojure ist
 nicht ganz so schnell, aber unter der großen Sprachenvielfalt immernoch sehr
-schnell - es ist etwa 3-5x langsamer als Java. Verglichen mit anderen
-Hochsprachen wie Ruby oder Python also 2 Größenordnungen schneller.
+schnell - es ist etwa 3-5x[\cite{AliothShootout1}] langsamer als Java.
+Verglichen mit anderen Hochsprachen wie Ruby oder Python also bis zu 2
+Größenordnungen schneller[\cite{AliothShootout2}] .
 
 Heute zählt das Argument der Geschwindigkeit also eher im Vorteil der LISPs -
 das zweitverbreiteste Argument ist das der Verbreitung, das eingangs des
