@@ -33,6 +33,17 @@ wartet auf die jedoch Thread B Zugriff hat. Thread B jedoch wartet darauf, dass
 Thread A die Resourcen R mutiert. Diese Situation kann nicht automatisiert
 gelößt werden - das Programm steht.
 
+\section{Java}
+\lstset{language=Java, basicstyle=\footnotesize, showstringspaces=false, tabsize=2}
+\lstinputlisting[label=lst:ThreadRaceJava,caption=\texttt{Thread Race Java}
+]{Listings/MyThread.java}
+
+Hier ist das gleiche Problem, nur in Java. Auch hier tritt der Effekt der Racing Condition auf. 
+Der Programmierer muss sich selber darum kümmern, dass \Code{sum} nur von einem Thread 
+gleichzeitig bearbeitet wird. Das kann man erreichen, indem man die methode \Code{inc()}
+als synchronized deklariert, oder in dem man einen Lock Mechanismus in \Code{SharedResource}
+implementiert (z.B. über das interface \Code{java.util.concurrent.locks.Lock}).
+
 \section{Clojure}
 
 \lstset{language=Lisp, basicstyle=\footnotesize, showstringspaces=false, tabsize=2}
