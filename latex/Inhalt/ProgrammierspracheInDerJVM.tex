@@ -1,0 +1,41 @@
+\chapter{Programmiersprachen in der JVM}
+\section{Beispiele}
+Neben Java bietet die JVM (Java Virtual Machine) noch unzähligen weiteren Programmiersprachen als Laufzeitumgebung. Hier nur die prominentesten Vertreter:
+
+\begin{tabular}{|l|l|l|}
+\hline
+Groovy		& eine Objektorientierte Skriptsprache. & http://groovy.codehaus.org/ 	\\
+\hline 
+Scala		& eine Sprache mit sowohl           	& http://www.scala-lang.org/  	\\
+			& Objektorientierten als auch 			&
+			& Funktionalen Elementen. 				&
+\hline 
+JRuby		& Implementierung von Ruby 				& http://www.jruby.org/			\\
+\hline 
+Jython 		& Implementierung von Python 			& http://www.jython.org/		\\
+\hline 
+Rhino 		& Implementierung von JavaScript 		& http://www.mozilla.org/rhino/	\\
+\hline 
+AspectJ 	& eine Aspektorientierte Erweiterung 	& http://eclipse.org/aspectj	\\
+			& von Java 								& 
+\hline 
+Clojure 	& funktionale Sprache, LISP-Dialekt		& http://clojure.org/			\\
+\end{tabular}
+[[http://en.wikipedia.org/wiki/List_of_JVM_languages][]]
+
+\section{Vorteile/Nachteile}
+Was aber bewegt Rich Hickey und die Entwickler der anderen Sprachen dazu, ihre Sprachen in die JVM zu integrieren oder zu portieren? Es sind die Enormen Vorteile der JVM, die die wenigen Nachteile bei weitem überwiegen. Dazu zählen unter anderem:
+
+\begin{itemize}
+\item \textbf{Plattformunabhängigkeit:} Die JVM gibt es für sehr viele Plattformen (Linux, Mac, Palm OS, Solaris, Windows, usw.). Das hat zur Folge, dass nur ein Compiler benötigt wird: Eigene Sprache -> Java Bytecode.
+\item \textbf{Verbreitung:} Die Verbreitung und Aktualisierung der JVM wird von anderen erledigt. Auch ist der enorme Verbreitungsgrad ein großer Vorteil, da die Benutzer so kein neues System installieren müssen.
+\item \textbf{Sicherheit:} Genau wie bei Java sind die Programme beim Ablauf vom System gekapselt. Das heißt sie laufen in einer Art Sandbox und können so deutlich besser kontrolliert werden.
+\item \textbf{Ressourcenverwaltung:} Da die JVM als Schicht zwischen System und Programm fungiert, sind auch alle Ressourcen gekapselt. Das heißt man muss sich nur begrenzt um Speicherverwaltung kümmern. Eine Garbage Collection wird auch gleich mitgeliefert.
+\item \textbf{Bibliotheken:} Es kann ohne großen Aufwand auf die reichhaltigen Java Bibliotheken zurückgegriffen werden, da diese ja meist im Java Bytecode vorliegen. So können existierende APIs weiterverwendet werden, aber auch neue Java Frameworks genutzt werden.
+\end {itemize}
+
+Bei all den Vorteilen bringt es aber auch eine paar Nachteile mit sich, eine Sprache in die JVM zu integrieren.
+
+\begin{itemize}
+\item \textbf{Ausführungsgeschwindigkeit:} Durch die zusätzliche Abstraktionsschicht muss man leider Einbusen bei der Performance hin nehmen. Diese halten sich aber dank zahlreicher Optimierungen in Grenzen.
+\item \textbf{Distanz zur Hardware:} Was auf der einen Seite ein Vorteil ist, kann auf der anderen Seite aber wiederum ein Nachteil sein. Durch die zusätzliche Abstraktionsschicht ist es leider nicht möglich, hardwarenah zu programmieren. Das trifft insbesondere auf die Entwicklung von Treibern zu.
