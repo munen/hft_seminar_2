@@ -1,53 +1,69 @@
 \chapter{Clojure ist dynamisch}
 \section{Dynamisch / Funktional}
-Die urprüngliche Definition aus den 1950ern von "dynamischer Programmierung" ist
+Die urprüngliche Definition aus den 1950ern von \Fachbegriff{dynamischer Programmierung} ist
 nicht mehr deckend mit dem heutigen Verständnis. Damals stand es dafür eine
 rekursive Funktion zu memoisieren - das bedeutet einen Cache innert einer
 rekursiven Funktion zu bisherigen Ergebnissen anzulegen. Heute ist es ein
 schwammig verwendeter Begriff, der gültig ist für eine Untermenge aus folgenden
 Attributen:
- * Dynanisches Allozieren von Speicher
-  * Bereits C erfüllt dieses Kriterium mit malloc() und free()
- * Dynamisch wachsende Datenstrukturen
-  * Java erfüllt dieses Kriterium (etwa mit Vector und ArrayList)
- * Dynamisches Generieren von Funktionen und Objekten
-  * Auch bekannt als *First Class Functions*. Eine Sprache implementiert First
-    Class Funktionen wenn Funktionen gespeichert, als Argument übergeben und als
-    Ergebnis einer Funktion zurück gegeben werden können.
- * Dynamisches Aufrufen einer 'eval' Methode
-  * eval ist meist so implementiert, dass Code als String der Methode übergeben
-    wird. Mittels dieses Mechanismus kann die Absenz von First Level Funktionen
-    abstrahieren.
- * Closures
-  * Eine Closure ist die Möglichkeit innerhalb des Kontextes einer Funktion eine
-    neue Funktion zu schreiben, die Zugang zum ersten Kontext hat.
- * Macros
-  * Mittels Macros ist es möglich dynamisch zur Laufzeit neuen Code zu
-    generieren. Richtig eingesetzt bieten Macros beispielsweise die Möglichkeit
-    die Syntax der Programmiersprache zu verändern. 
+\begin{itemize}
+ \item Dynanisches Allozieren von Speicher
+  \begin{itemize}
+    \item Bereits C erfüllt dieses Kriterium mit malloc() und free()
+  \end{itemize}
+ \item Dynamisch wachsende Datenstrukturen
+  \begin{itemize}
+    \item Java erfüllt dieses Kriterium (etwa mit Vector und ArrayList)
+  \end{itemize}
+ \item Dynamisches Generieren von Funktionen und Objekten
+  \begin{itemize}
+    \item Auch bekannt als \NeuerBegriff{First Class Functions}. Eine Sprache 
+          implementiert First Class Funktionen wenn Funktionen gespeichert, als
+          Argument übergeben und als Ergebnis einer Funktion zurück gegeben
+          werden können.
+  \end{itemize}
+ \item Dynamisches Aufrufen einer 'eval' Methode
+  \begin{itemize}
+    \item eval ist meist so implementiert, dass Code als String der Methode übergeben
+      wird. Mittels dieses Mechanismus kann die Absenz von First Level Funktionen
+      abstrahieren.
+  \end{itemize}
+ \item Closures
+  \begin{itemize}
+    \item Eine Closure ist die Möglichkeit innerhalb des Kontextes einer Funktion eine
+      neue Funktion zu schreiben, die Zugang zum ersten Kontext hat.
+  \end{itemize}
+ \item Macros
+  \begin{itemize}
+    \item Mittels Macros ist es möglich dynamisch zur Laufzeit neuen Code zu
+      generieren. Richtig eingesetzt bieten Macros beispielsweise die Möglichkeit
+      die Syntax der Programmiersprache zu verändern. 
+  \end{itemize}
+\end{itemize}
 
 Die Definition geht hier also weit auseinander - nach mancher Definition ist
 schon C eine dynamische Sprache. Meist jedoch wird eine Sprache dynamisch
-genannt sobald sie *Runtime Types* unterstützt, also Datentypen erst zur
-Laufzeit bestimmt. Clojure ist unter den LISPs eine der wenigen dynamisch
-getypten Sprachen - jedoch unterstützt Clojure *type hints* aus Gründen der
-Performanz.
+genannt sobald sie \Fachbegriff{Runtime Types} unterstützt, also Datentypen
+erst zur Laufzeit bestimmt. Clojure ist unter den LISPs eine der wenigen
+dynamisch getypten Sprachen - jedoch unterstützt Clojure \Fachbegriff{type
+hints} aus Gründen der Performanz.
 
 Clojure ist eine dynamische Programmiersprache, die auf der Java Virtual Machine
-und der Microsoft CLR[[Citation needed][]] läuft. Sie ist als universelle
-Programmiersprache ausgelegt, die die Zügänglichkeit und die interaktive
+und der Microsoft CLR\cite{ClojureCLR} läuft. Sie ist als universelle
+Programmiersprache ausgelegt, die die Zugänglichkeit und die interaktive
 Entwicklung von Scriptsprachen mit Effizienz und Robstusteit paart. Obwohl
 Clojure in Java Bytecode kompiliert bleibt die Sprache dynamisch, da alle
 Clojure Funktionen zur Laufzeit verfügbar sind. 
 
 Für Clojure bedeutet "dynamisch sein" eine interaktive Umgebung zu bieten.
-Nahezu jedes Sprachkonstrukt kann vergegenständlicht und somit verändert werden.
-Darüber hinaus bietet Clojure die klassisch dynamische Entwicklungsumgebug im
-LISP-Umfeld: ein *REPL*. Ein REPL ist eine Read-Eval-Print-Loop. Das bedeutet,
-dass Clojure's S-Expressions dynamisch geparst und interpretiert werden. In
-einem REPL kann wie in Ruby's IRB oder dem Python Interpreter gearbeitet werden.
-Eien REPL bietet also ein einfaches Konsolen-Interface in das Kommandos
-eingegeben werden können, um direkt mit den Ergebnissen weiter zu arbeiten.
+Nahezu jedes Sprachkonstrukt kann vergegenständlicht und somit verändert
+werden.  Darüber hinaus bietet Clojure die klassisch dynamische
+Entwicklungsumgebug im LISP-Umfeld: ein \Fachbegriff{REPL} Ein REPL ist eine
+Read-Eval-Print-Loop. Das bedeutet, dass Clojure's S-Expressions dynamisch
+geparst und interpretiert werden. In einem REPL kann wie in Ruby's IRB oder dem
+Python Interpreter gearbeitet werden.  Eien REPL bietet also ein einfaches
+Konsolen-Interface in das Kommandos eingegeben werden können, um direkt mit den
+Ergebnissen weiter zu arbeiten.
 
 Clojure ist durch Implementation auf der JVM zwar daran gebunden eine
 kompilierte Sprache zu sein, doch merkt man als Endanwender (in diesem Fall als
@@ -82,15 +98,22 @@ Nicht-Veränderbarkeit, den Unterschied zwischen Zeit, Zustand und Identität.
 Objektorientung hat allerdings auch für Clojure interessante Aspekte. So
 implementiert es einige der Kerngedanken der Objektorientung - allerdings auf
 ganz eigene Weise:
- * Polymorphismus
-  * Polymorphismus ist die Fähigkeit einer Funktion je nach Kontext
-    unterschiedliche Fähigkeiten zu besitzen. Hierfür bietet Clojure sogenannte
-    *protocols*. Datentypen können so um Funktionalität erweitert werden. Diese
-    Funktionalität ist ähnlich zu den Mixins aus Ruby.
- * Subtypen
-  * Obwohl Clojure's Datentypen nicht auf Classen fussen, gibt es eine
-    Möglichkeit Subtypen zu erstellen: ad-hoc Hierarchien.
- * Kapselung
+\begin{itemize}
+ \item Polymorphismus
+  \begin{itemize}
+    \item Polymorphismus ist die Fähigkeit einer Funktion je nach Kontext
+      unterschiedliche Fähigkeiten zu besitzen. Hierfür bietet Clojure
+      sogenannte \Fachbegriff{protocols} Datentypen können so um Funktionalität
+      erweitert werden. Diese Funktionalität ist ähnlich zu den Mixins aus
+      Ruby.
+  \end{itemize}
+ \item Subtypen
+  \begin{itemize}
+    \item Obwohl Clojure's Datentypen nicht auf Classen fussen, gibt es eine
+      Möglichkeit Subtypen zu erstellen: ad-hoc Hierarchien.
+  \end{itemize}
+ \item Kapselung
+\end{itemize}
 
 
 Einer der Nachteile der strikten Objektorientung ist die enge Kopplung von Daten
