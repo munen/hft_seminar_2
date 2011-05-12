@@ -1,16 +1,16 @@
 \chapter{Funktionale Programmiersprache}
 \section{Definition}
-Die heutigen funktionalen Programmierparadigmen beruhen auf dem in den 1930er Jahren von Alonso Church und Stephen Kleene eingeführten Lambda-Kalkül. Es handelt sich dabei um eine formale Sprache um Funktionen zu untersuchen. Basierend darauf wurde 1960 von Marvin Minsky LISP entwickelt, die sozusagen erste funktionale Programmiersprache.
+Die heutigen funktionalen Programmierparadigmen beruhen auf dem in den 1930er Jahren von Alonso Church und Stephen Kleene eingeführten \NeuerBegriff{Lambda-Kalkül}. Es handelt sich dabei um eine formale Sprache um Funktionen zu untersuchen. Basierend darauf wurde 1960 von Marvin Minsky LISP entwickelt, die sozusagen erste funktionale Programmiersprache.
 
 Heutzutage ist es schwer, eine allgemeingültige Definition für Funktionale Programmiersprachen zu finden, da funktionale Konzepte in sehr vielen Programmiersprachen vorkommen. In der Wikipedia wird der Begriff wie folgt definiert:
 
-"Eine funktionale Programmiersprache ist eine Programmiersprache, die Sprachelemente zur Kombination und Transformation von Funktionen anbietet. Eine rein funktionale Programmiersprache ist eine Programmiersprache, die die Verwendung von Elementen ausschließt, die im Widerspruch zum funktionalen Programmierparadigma stehen." [[http://de.wikipedia.org/wiki/Funktionale\_Programmiersprache][]]
+"Eine funktionale Programmiersprache ist eine Programmiersprache, die Sprachelemente zur Kombination und Transformation von Funktionen anbietet. Eine rein funktionale Programmiersprache ist eine Programmiersprache, die die Verwendung von Elementen ausschließt, die im Widerspruch zum funktionalen Programmierparadigma stehen." \cite{wiki1}
 
 Der erste Teil der Definition trifft aber auf sehr viele Programmiersprachen zu, die man im Allgemeinen nicht als funktional bezeichnen würde. Der zweite Teil hingegen schließt unter Umständen sehr viele Sprachen aus, die man wiederum im Allgemeinen als funktional bezeichnen würde, je nach dem was man alles zum funktionalen Programmierparadigma zählt.
 
 Im Gegensatz dazu umfasstttt die Definition der School of Computer Science Nottingham mehr die Sprachen, die auch umgangssprachlich als funktional bezeichnet werden.
 
-"Functional programming is a style of programming that emphasizes the evaluation of expressions, rather than execution of commands. The expressions in these language are formed by using functions to combine basic values. A functional language is a language that supports and encourages programming in a functional style." [[http://www.cs.nott.ac.uk/~gmh/faq.html][]]
+"Functional programming is a style of programming that emphasizes the evaluation of expressions, rather than execution of commands. The expressions in these language are formed by using functions to combine basic values. A functional language is a language that supports and encourages programming in a functional style." \cite{SCSN}
 
 Die Betonung liegt hier auf \textbf{encourage}, also das Anregen oder Ermutigen, auf funktionale Weise zu Programmieren. Damit werden all die Sprachen aus der Definition ausgeschlossen, die nur aus einem imperativen Ansatz heraus funktionale Elemente implementieren.
 
@@ -21,5 +21,5 @@ Die Betonung liegt hier auf \textbf{encourage}, also das Anregen oder Ermutigen,
 \item \textbf{Debuggen und Testen einfacher:} In rein funktionalen Programmiersprachen müssen weder Seiteneffekte noch Zustände berücksichtigt werden. Beim Debuggen können Fehler deshalb unabhängig vom Speicherzustand betrachtet werden. Durch die hohe Modularität kann man auch sehr einfach einzelne Funktionen testen. 
 \item \textbf{Einfache Syntax:} Im Allgemeinen haben funktionale Programmiersprachen eine einfachere Syntax als imperative Programmiersprachen, da sie  mit wenigen syntaktischen Konstrukten und wenigen Schlüsselwörtern auskommen. 
 \item \textbf{Modularisierung:} Ein Problem kann soweit zerlegt werden, dass es nur noch aus simplen Funktionen besteht, die dann wiederum in anderen Problemlösungen verwendet werden können.
-\item \textbf{Parallelisierbarkeit:} Einzelne Teilausdrücke können ohne Probleme parallel ausgewertet werden. Das ist insbesondere ein großer Vorteil bei der Programmierung für Multi-Core-Systeme.
+\item \textbf{Parallelisierbarkeit:} Einzelne Teilausdrücke können ohne Probleme parallel ausgewertet werden. Das ist insbesondere ein großer Vorteil bei der Programmierung für Multicore Systeme.
 \end{itemize}
