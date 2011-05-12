@@ -22,13 +22,13 @@ Attributen:
           Argument übergeben und als Ergebnis einer Funktion zurück gegeben
           werden können.
   \end{itemize}
- \item Dynamisches Aufrufen einer 'eval' Methode
+ \item Dynamisches Aufrufen einer \Code{eval} Methode
   \begin{itemize}
-    \item eval ist meist so implementiert, dass Code als String der Methode übergeben
+    \item \Code{eval} ist meist so implementiert, dass Code als String der Methode übergeben
       wird. Mittels dieses Mechanismus kann die Absenz von First Level Funktionen
       abstrahieren.
   \end{itemize}
- \item Closures
+ \item Closures\nopagebreak
   \begin{itemize}
     \item Eine Closure ist die Möglichkeit innerhalb des Kontextes einer Funktion eine
       neue Funktion zu schreiben, die Zugang zum ersten Kontext hat.
@@ -48,12 +48,12 @@ erst zur Laufzeit bestimmt. Clojure ist unter den LISPs eine der wenigen
 dynamisch getypten Sprachen - jedoch unterstützt Clojure \Fachbegriff{type
 hints} aus Gründen der Performanz.
 
-Clojure ist eine dynamische Programmiersprache, die auf der Java Virtual Machine
-und der Microsoft CLR[\cite{ClojureCLR}] läuft. Sie ist als universelle
-Programmiersprache ausgelegt, die die Zugänglichkeit und die interaktive
-Entwicklung von Scriptsprachen mit Effizienz und Robstusteit paart. Obwohl
-Clojure in Java Bytecode kompiliert bleibt die Sprache dynamisch, da alle
-Clojure Funktionen zur Laufzeit verfügbar sind. 
+Clojure ist eine dynamische Programmiersprache, die auf der \Fachbegriff{Java
+Virtual Machine} und der \Fachbegriff{Microsoft CLR}[\cite{ClojureCLR}] läuft.
+Sie ist als universelle Programmiersprache ausgelegt, die die Zugänglichkeit
+und die interaktive Entwicklung von Scriptsprachen mit Effizienz und
+Robstusteit paart. Obwohl Clojure in Java Bytecode kompiliert bleibt die
+Sprache dynamisch, da alle Clojure Funktionen zur Laufzeit verfügbar sind. 
 
 Für Clojure bedeutet "dynamisch sein" eine interaktive Umgebung zu bieten.
 Nahezu jedes Sprachkonstrukt kann vergegenständlicht und somit verändert
