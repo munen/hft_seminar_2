@@ -1,0 +1,100 @@
+\chapter{Clojure ist dynamisch}
+\section{Dynamisch / Funktional}
+Die urprüngliche Definition aus den 1950ern von "dynamischer Programmierung" ist
+nicht mehr deckend mit dem heutigen Verständnis. Damals stand es dafür eine
+rekursive Funktion zu memoisieren - das bedeutet einen Cache innert einer
+rekursiven Funktion zu bisherigen Ergebnissen anzulegen. Heute ist es ein
+schwammig verwendeter Begriff, der gültig ist für eine Untermenge aus folgenden
+Attributen:
+ * Dynanisches Allozieren von Speicher
+  * Bereits C erfüllt dieses Kriterium mit malloc() und free()
+ * Dynamisch wachsende Datenstrukturen
+  * Java erfüllt dieses Kriterium (etwa mit Vector und ArrayList)
+ * Dynamisches Generieren von Funktionen und Objekten
+  * Auch bekannt als *First Class Functions*. Eine Sprache implementiert First
+    Class Funktionen wenn Funktionen gespeichert, als Argument übergeben und als
+    Ergebnis einer Funktion zurück gegeben werden können.
+ * Dynamisches Aufrufen einer 'eval' Methode
+  * eval ist meist so implementiert, dass Code als String der Methode übergeben
+    wird. Mittels dieses Mechanismus kann die Absenz von First Level Funktionen
+    abstrahieren.
+ * Closures
+  * Eine Closure ist die Möglichkeit innerhalb des Kontextes einer Funktion eine
+    neue Funktion zu schreiben, die Zugang zum ersten Kontext hat.
+ * Macros
+  * Mittels Macros ist es möglich dynamisch zur Laufzeit neuen Code zu
+    generieren. Richtig eingesetzt bieten Macros beispielsweise die Möglichkeit
+    die Syntax der Programmiersprache zu verändern. 
+
+Die Definition geht hier also weit auseinander - nach mancher Definition ist
+schon C eine dynamische Sprache. Meist jedoch wird eine Sprache dynamisch
+genannt sobald sie *Runtime Types* unterstützt, also Datentypen erst zur
+Laufzeit bestimmt. Clojure ist unter den LISPs eine der wenigen dynamisch
+getypten Sprachen - jedoch unterstützt Clojure *type hints* aus Gründen der
+Performanz.
+
+Clojure ist eine dynamische Programmiersprache, die auf der Java Virtual Machine
+und der Microsoft CLR[[Citation needed][]] läuft. Sie ist als universelle
+Programmiersprache ausgelegt, die die Zügänglichkeit und die interaktive
+Entwicklung von Scriptsprachen mit Effizienz und Robstusteit paart. Obwohl
+Clojure in Java Bytecode kompiliert bleibt die Sprache dynamisch, da alle
+Clojure Funktionen zur Laufzeit verfügbar sind. 
+
+Für Clojure bedeutet "dynamisch sein" eine interaktive Umgebung zu bieten.
+Nahezu jedes Sprachkonstrukt kann vergegenständlicht und somit verändert werden.
+Darüber hinaus bietet Clojure die klassisch dynamische Entwicklungsumgebug im
+LISP-Umfeld: ein *REPL*. Ein REPL ist eine Read-Eval-Print-Loop. Das bedeutet,
+dass Clojure's S-Expressions dynamisch geparst und interpretiert werden. In
+einem REPL kann wie in Ruby's IRB oder dem Python Interpreter gearbeitet werden.
+Eien REPL bietet also ein einfaches Konsolen-Interface in das Kommandos
+eingegeben werden können, um direkt mit den Ergebnissen weiter zu arbeiten.
+
+Clojure ist durch Implementation auf der JVM zwar daran gebunden eine
+kompilierte Sprache zu sein, doch merkt man als Endanwender (in diesem Fall als
+Programmierer) nichts, da Clojure neuen Code spontan übersetzt.
+
+
+\section{Nicht objektorientiert}
+Clojure entstand mit dem Hintergrund die Komplexität, die nebenläufige
+Programmierung mit sich bringt zu verringern. Teil dieser Komplexität ist das
+Konstrukt der Objektorienterierung. In objektorientierten Sprachen werden
+Zustände in Objekten gekapselt und über wohldefinierte Schnittstellen
+veränderbar gemacht. In der Objektorientierung gibt es keine klare
+Unterscheidung zwischen Zustand und Identität. 
+
+Clojure hingegen ergreift eine im ersten Augenblick orthogonal zur Intention
+eines Programmes liegende Herangehensweise: Daten in Clojures Datentypen sind
+nicht veränderbar. Dadurch erschlägt Clojure auf einmal die Probleme, die
+veränderbare Zustände in Objekten mit sich bringen - beispielsweise Racing
+Conditions. Darüber hinaus wird das Konzept der Nebenläufigkeit stark
+vereinfacht - da sich kein Objekt verändert kann es ohne Angst vor Inkonsistenz
+als Argument verwandt werden.
+
+Imperative Programmiersprachen erlauben die Mutation von Variablen, was für sich
+genommen eine plausible Herangehensweise ist. Jedoch führt sie bei
+gleichzeitiger Anwendung zu Konflikten - schon der Begriff "veränderbarer
+Zustand" ist ein Oxymoron, denn ein Zustand ist ein in diskreter Zeit
+definiertes Faktum. Ein Zustand kann sich also in diesem Sinne nicht verändern -
+zu einem anderen Zeitpunkt jedoch kann es völlig neue Zustände geben.
+
+Clojure hingegen fokussiert auf funktionale Programmierung,
+Nicht-Veränderbarkeit, den Unterschied zwischen Zeit, Zustand und Identität.
+Objektorientung hat allerdings auch für Clojure interessante Aspekte. So
+implementiert es einige der Kerngedanken der Objektorientung - allerdings auf
+ganz eigene Weise:
+ * Polymorphismus
+  * Polymorphismus ist die Fähigkeit einer Funktion je nach Kontext
+    unterschiedliche Fähigkeiten zu besitzen. Hierfür bietet Clojure sogenannte
+    *protocols*. Datentypen können so um Funktionalität erweitert werden. Diese
+    Funktionalität ist ähnlich zu den Mixins aus Ruby.
+ * Subtypen
+  * Obwohl Clojure's Datentypen nicht auf Classen fussen, gibt es eine
+    Möglichkeit Subtypen zu erstellen: ad-hoc Hierarchien.
+ * Kapselung
+
+
+Einer der Nachteile der strikten Objektorientung ist die enge Kopplung von Daten
+und Funktion. In manchen Sprachen ist es gar nicht möglich Funktion ohne das
+elaborate Formulieren von Klassen zu implementieren. Dies bringt eine ganz
+eigene Form von Komplexität und Weitschweifigkeit mit sich, die von vielen als
+nicht notwendig angesehen wird.

@@ -1,0 +1,46 @@
+\chapter{Probleme und deren Lösungen in unterschiedlichen Programmiersprachen}
+\section{Ruby}
+\lstset{language=Ruby, basicstyle=\footnotesize, showstringspaces=false, tabsize=2}
+\lstinputlisting[label=lst:ThreadRaceRuby,caption=\texttt{Thread Race Ruby}
+]{Listings/thread_race.rb}
+
+
+Beispielergebnis: 17221
+
+Was ist hier geschehen? Es wurden 10 Threads generiert, die jeweils 10.000x die
+Variable \Code{sum} inkrementieren. Das Problem hierbei ist, dass bei einem solchen
+Konzept schnell Dateninkonsistenzen entstehen.
+
+Nehmen wir an Thread \#1 inkrementiert die Variable \Code{sum} mittels
+\Code{inc()}. \Code{sum} steht zur Zeit auf dem Wert 0. \Code{inc(sum)} wird
+aufgerufen. Nun kommt der Scheduler des Betriebssystemes und gibt Thread \#2
+CPU Zeit. Dieser fuehrt ebenfalls \Code{inc(sum)} mit dem Wert 0 aus -
+\Code{sum} wird als 1 gespeichert. Der Scheduler schlägt wieder zu und gibt
+Thread \#1 die Chance seine Berechnung zu beenden.  Dieser speichert \Code{sum}
+nun ebenfalls als 1.
+
+Dieser Effekt wird \NeuerBegriff{Racing Condition} genannt. Er stammt aus dem
+Englischen und will aussagen, dass mehrere Entitäten in einem Wettlauf um
+Resourcen stehen. Ohne die Hilfsmittel aus Funktionaler Programmierung müsste
+die Resource \Code{sum} dagegen abgesichert werden. Dafür werden häufig \NeuerBegriff{Locks} eingesetzt. Bei einem Lock wird ein Codebereich gesichert, indem nur einem Thread dazu Zutritt gewährt wird. 
+
+Diese Methodologie funktioniert, jedoch muss jede Stelle an der eine Racing
+Condition entstehen kann separat gekapselt werden - wird nur eine vergessen
+sind Bugs im Programm versteckt, die häufig erst spät auftauchen. Darüber
+hinaus ist es mit Locks möglich sogenannte \NeuerBegriff{Deadlocks} zu
+erschaffen. Ein Deadlock ist eine Situation in der Thread A auf Ressource R
+wartet auf die jedoch Thread B Zugriff hat. Thread B jedoch wartet darauf, dass
+Thread A die Resourcen R mutiert. Diese Situation kann nicht automatisiert
+gelößt werden - das Programm steht.
+
+\section{Clojure}
+
+\lstset{language=Lisp, basicstyle=\footnotesize, showstringspaces=false, tabsize=2}
+\lstinputlisting[label=lst:ThreadRaceClojure,caption=\texttt{Thread Race Clojure}
+]{Listings/tread_race.lisp}
+
+In diesem Listing ist der Mechanismus des \NeuerBegriff{Software Transactional
+Memory} gezeigt. Diesen kennt man aus dem Datenbank-Umfeld. Das Framework
+kümmert sich hierbei darum, dass die Resource \Code{visitors} geschützt wird.
+Sie kann nicht ohne einen \NeuerBegriff{dosync} Block mutiert werden. Dieser
+Block wiederum stellt wiederum sicher, dass Mutationen transaktional ablaufen. 
